@@ -4,6 +4,10 @@
 - 이름 : 박상환
 
 애플리케이션의 실행 방법 (엔드포인트 호출 방법 포함)
+- Version
+  - Java 17
+  - Spring Boot 3.1.2, Gradle-Groovy
+  - MYSQL 8.0.32
 |HTTP Method|URI|Description|
 |------|---|---|
 |POST|/signup|회원가입|
