@@ -77,8 +77,149 @@
   - URI 주소에 삭제하고자하는 게시글의 ID 값 입력
   - @AuthenticationPrincipal를 통해 UserDetails에 접근하여 로그인 정보를 가져옴
   - 게시글 작성자와 로그인한 정보가 같다면 삭제
+
 API 명세(request/response 포함)
-- Request
-- 
-- Response
+1. 회원가입
+   1.1 Request
+   - (POST) /signup
+   - {
+       "email" : "ggg12@naver.com",
+       "password" : "1q2w3e4e"
+     }
+   1.2 Response
+   - 200 OK
+     - "회원가입 성공"
+   - 400 Bad Request(이메일 검증)
+     - "이메일 형식에 적합하지 않습니다."
+   - 400 Bad Request(비밀번호 검증)
+     - "비밀번호 형식에 적합하지 않습니다. 8자리 이상 설정해주세요."
+2. 로그인
+  2.1 Request
+   - (POST) /members/login
+   - {
+    "email":"ggg12@naver.com", 
+    "password" : "1q2w3e4e"
+}
+  2.2 Response
+  - 200 OK
+     - {
+          GrantType : Bearer
+          RefreshToken : eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2OTIxMTk0NzF9.TQhfkQRVhHM-bBsxs4vBpW4VMBBSHn_d4XLP7NWnLPs
+          AccessToken : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZ2cxMkBuYXZlci5jb20iLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjkyMDM2NjcxfQ.mJdBUAx9juwTqdinIRr6-mExXmNdkx6wurKJAe_dc8M
+       }
+      - 400 Bad Request(이메일 검증)
+     - "이메일 형식에 적합하지 않습니다."
+   - 400 Bad Request(비밀번호 검증)
+     - "비밀번호 형식에 적합하지 않습니다. 8자리 이상 설정해주세요."
+3. 게시물 등록
+  3.1 Request
+    - (POST) /posts/create
+    - Headers Authorization : Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZ2cxMkBuYXZlci5jb20iLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjkyMDM2NjcxfQ.mJdBUAx9juwTqdinIRr6-mExXmNdkx6wurKJAe_dc8M
+    - {"title":"wanted","content":"universal"}
+  3.2 Response
+    - 201 Created
+      - {
+        "id": 1,
+        "title": "wanted",
+        "content": "universal",
+        "email": "ggg12@naver.com"
+        }
+    - 403 Forbidden (유효하지 않은 Access Token)
+4. 게시글 목록 조회
+  4.1 Request
+    - (GET) /posts?page=0&size=10
+    - Headers Authorization : Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZ2cxMkBuYXZlci5jb20iLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjkyMDM2NjcxfQ.mJdBUAx9juwTqdinIRr6-mExXmNdkx6wurKJAe_dc8M
+  4.2 Response
+    - 200 OK
+    - {
+    "content": [
+        {
+            "id": 1,
+            "title": "wanted",
+            "content": "universal",
+            "email": "ggg12@naver.com"
+        },
+        {
+            "id": 2,
+            "title": "",
+            "content": "universal",
+            "email": "ggg12@naver.com"
+        },
+        {
+            "id": 3,
+            "title": "",
+            "content": "",
+            "email": "ggg12@naver.com"
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "empty": true,
+            "sorted": false,
+            "unsorted": true
+        },
+        "offset": 0,
+        "pageSize": 10,
+        "pageNumber": 0,
+        "paged": true,
+        "unpaged": false
+    },
+    "totalPages": 1,
+    "totalElements": 3,
+    "last": true,
+    "size": 10,
+    "number": 0,
+    "sort": {
+        "empty": true,
+        "sorted": false,
+        "unsorted": true
+    },
+    "numberOfElements": 3,
+    "first": true,
+    "empty": false
+} 
+    - 403 Forbidden (유효하지 않은 Access Token)
+5. 특정 게시글 조회
+  5.1 Request
+    - (GET) /posts/1
+    - Headers Authorization : Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZ2cxMkBuYXZlci5jb20iLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjkyMDM2NjcxfQ.mJdBUAx9juwTqdinIRr6-mExXmNdkx6wurKJAe_dc8M
+
+  5.2 Response
+    - 200 OK
+    - {
+    "id": 1,
+    "title": "wanted",
+    "content": "universal",
+    "email": "ggg12@naver.com"
+}
+    - 404 NOT FOUND (존재하지 않는 게시글)
+    - 403 Forbidden (유효하지 않은 Access Token)
+6. 게시글 수정
+  6.1 Request
+    - (PUT) /posts/1
+    - Headers Authorization : Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZ2cxMkBuYXZlci5jb20iLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjkyMDM2NjcxfQ.mJdBUAx9juwTqdinIRr6-mExXmNdkx6wurKJAe_dc8M
+    - {"title": "타이틀 수정", "content": "내용 수정"}
+  6.2 Response
+    - 200 OK
+    - {
+    "id": 1,
+    "title": "타이틀 수정",
+    "content": "내용 수정",
+    "email": "ggg12@naver.com"
+}
+    - 404 NOT Found (존재하지 않는 게시글)
+      - "게시글을 찾을 수 없습니다."
+    - 403 Forbidden (유효하지 않은 Access Token)
+    - 403 Forbidden (작성자와 로그인한 사용자가 다른 경우)
+      - 작성자만 삭제할 수 있습니다.
+7. 게시글 삭제
+  7.1 Request
+  - (DELETE) /posts/1
+  - Headers Authorization : Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZ2cxMkBuYXZlci5jb20iLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjkyMDM2NjcxfQ.mJdBUAx9juwTqdinIRr6-mExXmNdkx6wurKJAe_dc8M
+  7.2 Response
+  - 200 OK
+    - 게시글 삭제 성공
+  - 403 Forbidden (유효하지 않은 Access Token)
+  - 403 Forbidden (작성자와 로그인한 사용자가 다른 경우)
+    - 작성자만 삭제할 수 있습니다.
 
