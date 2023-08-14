@@ -8,6 +8,7 @@
   - Java 17
   - Spring Boot 3.1.2, Gradle-Groovy
   - MYSQL 8.0.32
+
 |HTTP Method|URI|Description|
 |------|---|---|
 |POST|/signup|회원가입|
@@ -24,7 +25,8 @@
 - 연관 관계
   - member-member_roles, 1대1 관계
   - member-post, 1대다 관계
-- ![DB구조](https://github.com/sangbus/wanted-pre-onboarding-backend/assets/87519025/6c6d8d20-2a9e-4e8c-800d-03b720289c9c)
+    
+ ![DB구조](https://github.com/sangbus/wanted-pre-onboarding-backend/assets/87519025/6c6d8d20-2a9e-4e8c-800d-03b720289c9c)
   - member
     - email(PK) : 이메일, 영문 최대 20자
     - password : 비밀번호, 영문 최대 50자
