@@ -58,7 +58,7 @@
   - JwtProvider 클래스를 통해 Refresh Token, Access Token, JWT 정보 가져오기, JWT 정보 검증
 ### 과제 3. 새로운 게시글을 생성하는 엔드포인트((POST)/posts/create)
   - 게시글의 제목, 내용 입력
-  - 작성자의 이메일, 게시글 제목, 내용, 번호가 DB에 저장
+  - 작성자의 이메일, 게시글 번호, 제목, 내용이 DB에 저장
 ### 과제 4. 게시글 목록을 조회하는 엔드포인트((GET)/posts?page=0&size=10)
   - PageRequest를 사용해 DB에 저장된 Entity들을 페이지로 나눔
   - 게시글 Repository의 finalAll 메서드를 PageRequest에 저장
@@ -108,11 +108,11 @@
   #### 6.2.2. Response
   - 200 OK
 ```JSON
-    {
-          GrantType : Bearer
-          RefreshToken : eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2OTIxMTk0NzF9.TQhfkQRVhHM-bBsxs4vBpW4VMBBSHn_d4XLP7NWnLPs
-          AccessToken : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZ2cxMkBuYXZlci5jb20iLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjkyMDM2NjcxfQ.mJdBUAx9juwTqdinIRr6-mExXmNdkx6wurKJAe_dc8M
-    }
+{
+    GrantType : Bearer
+    RefreshToken : eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2OTIxMTk0NzF9.TQhfkQRVhHM-bBsxs4vBpW4VMBBSHn_d4XLP7NWnLPs
+    AccessToken : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZ2cxMkBuYXZlci5jb20iLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjkyMDM2NjcxfQ.mJdBUAx9juwTqdinIRr6-mExXmNdkx6wurKJAe_dc8M
+}
 ```
   - 400 Bad Request(이메일 검증)
      - "이메일 형식에 적합하지 않습니다."
