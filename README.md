@@ -30,7 +30,7 @@
     
   - member
     - email(PK) : 이메일, 영문 최대 20자
-    - password : 비밀번호, 영문 최대 50자
+    - password : 비밀번호, 영문 최소 8자리 이상, 최대 50자
   - member_roles
     - member_email(fk) : 이메일, 영문 최대 20자
     - roles : 사용자의 권한, 회원가입하면 USER 권한 얻음, 영문 최대 10자
@@ -41,11 +41,12 @@
     - email(fk) : 이메일, 영문 최대 20자
 
 # 4. 구현한 API의 동작을 촬영한 데모 영상 링크
-- 
+- https://www.youtube.com/watch?v=4oMGl8LDWeQ
 # 5. 구현 방법 및 이유에 대한 간략한 설명
 - 배포 하지 않았기 때문에 localhost에서 동작
 - 스프링의 어려운 초기 설정을 간편하게 처리해주어 비즈니스 로직을 구현하는데에 집중할 수 있게 Spring Boot 사용
 - 보안과 관련해서 체계적으로 많은 옵션을 제공해주기 때문에 Spring Security 사용
+- Access Token 1시간. Refresh Token 1일로 설정
 ### 과제 1. 사용자 회원가입 엔드포인트((POST)/signup)
   - Pattern.compile를 사용하여 @를 포함한 이메일 형식 지정
   - password.length()를 사용하여 비밀번호 문자열 길이 비교
