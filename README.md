@@ -32,7 +32,7 @@
     - email(PK) : 이메일, 영문 최대 20자
     - password : 비밀번호, 영문 최소 8자리 이상, 최대 50자
   - member_roles
-    - member_email(fk) : 이메일, 영문 최대 20자
+    - member_email : 이메일, 영문 최대 20자
     - roles : 사용자의 권한, 회원가입하면 USER 권한 얻음, 영문 최대 10자
   - post
     - id : 인덱스 값
