@@ -36,21 +36,21 @@
     ![DB구조](https://github.com/sangbus/wanted-pre-onboarding-backend/assets/87519025/b374f371-4fdf-4f9f-a4a7-8ab69732d39d)
     
   - member
-    - email(PK) : 이메일, 영문 최대 20자
-    - password : 비밀번호, 영문 최소 8자리 이상, 최대 50자
+    - email(PK) : 이메일, 영문 최대 50자, varchar(50)
+    - password : 비밀번호, 영문 최소 8자리 이상, 최대 50자, varchar(50)
   - member_roles
-    - member_email : 이메일, 영문 최대 20자
-    - roles : 사용자의 권한, 회원가입하면 USER 권한 얻음, 영문 최대 10자
+    - member_email : 이메일, 영문 최대 20자, varchar(50)
+    - roles : 사용자의 권한, 회원가입하면 USER 권한 얻음, 영문 최대 10자, varchar(10)
   - post
-    - id : 인덱스 값
-    - title : 제목, 영문 최대 20자
-    - content : 내용, 영문 최대 200자
-    - email(fk) : 이메일, 영문 최대 20자
+    - id : 인덱스 값, auto increment
+    - title : 제목, 영문 최대 20자, varchar(20)
+    - content : 내용, 영문 최대 200자, varchar(200)
+    - email(fk) : 이메일, 영문 최대 50자, varchar(50)
 
 # 4. 구현한 API의 동작을 촬영한 데모 영상 링크
 - https://www.youtube.com/watch?v=4oMGl8LDWeQ
 # 5. 구현 방법 및 이유에 대한 간략한 설명
-- 배포 하지 않았기 때문에 localhost에서 동작
+- 배포 하지 않았기 때문에 localhost:8080에서 동작
 - 스프링의 어려운 초기 설정을 간편하게 처리해주어 비즈니스 로직을 구현하는데에 집중할 수 있게 Spring Boot 사용
 - 보안과 관련해서 체계적으로 많은 옵션을 제공해주기 때문에 Spring Security 사용
 - Access Token 1시간. Refresh Token 1일로 설정
