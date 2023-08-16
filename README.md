@@ -54,6 +54,7 @@
 - 스프링의 어려운 초기 설정을 간편하게 처리해주어 비즈니스 로직을 구현하는데에 집중할 수 있게 Spring Boot 사용
 - 보안과 관련해서 체계적으로 많은 옵션을 제공해주기 때문에 Spring Security 사용
 - Access Token 1시간. Refresh Token 1일로 설정
+- 회원가입 및 게시글 조회, 등록, 수정, 삭제 단위 테스트 추가
 ### 과제 1. 사용자 회원가입 엔드포인트((POST)/signup)
   - Pattern.compile를 사용하여 @를 포함한 이메일 형식 지정
   - password.length()를 사용하여 비밀번호 문자열 길이 비교
