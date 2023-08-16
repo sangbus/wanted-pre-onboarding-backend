@@ -18,13 +18,13 @@
 
 |HTTP Method|URI|Description|
 |------|---|---|
-|POST|/signup|회원가입|
-|POST|/members/login|로그인|
-|POST|/posts/create|게시글 작성|
-|GET|/posts?page=0&size=10|게시글 목록 조회|
-|GET|/posts/1|특정 게시글 조회|
-|PUT|/posts/1|게시글 수정|
-|DELETE|/posts/1|게시글 삭제|
+|POST|localhost:8080/signup|회원가입|
+|POST|localhost:8080/members/login|로그인|
+|POST|localhost:8080/posts/create|게시글 작성|
+|GET|localhost:8080/posts?page=0&size=10|게시글 목록 조회|
+|GET|localhost:8080/posts/1|특정 게시글 조회|
+|PUT|localhost:8080/posts/1|게시글 수정|
+|DELETE|localhost:8080/posts/1|게시글 삭제|
 
 
 # 3. 데이터베이스 테이블 구조
@@ -89,7 +89,7 @@
 # 6. API 명세(request/response 포함)
 ### 6.1. 회원가입
    #### 6.1.1. Request
-   - (POST) /signup
+   - (POST) localhost:8080/signup
 ```JSON
      {
        "email" : "ggg12@naver.com",
@@ -105,7 +105,7 @@
      - "비밀번호 형식에 적합하지 않습니다. 8자리 이상 설정해주세요."
 ### 6.2. 로그인
   #### 6.2.1. Request
-   - (POST) /members/login
+   - (POST) localhost:8080/members/login
 ```JSON
     {
       "email":"ggg12@naver.com", 
@@ -127,7 +127,7 @@
      - "비밀번호 형식에 적합하지 않습니다. 8자리 이상 설정해주세요."
 ### 6.3. 게시물 등록
   #### 6.3.1. Request
-  - (POST) /posts/create
+  - (POST) localhost:8080/posts/create
   - Headers Authorization : Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZ2cxMkBuYXZlci5jb20iLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjkyMDM2NjcxfQ.mJdBUAx9juwTqdinIRr6-mExXmNdkx6wurKJAe_dc8M
 ```JSON
     {
@@ -149,7 +149,7 @@
     
 ### 6.4. 게시글 목록 조회<br/>
   #### 6.4.1 Request  
-  - (GET) /posts?page=0&size=10<br/>
+  - (GET) localhost:8080/posts?page=0&size=10<br/>
   - Headers Authorization : Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZ2cxMkBuYXZlci5jb20iLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjkyMDM2NjcxfQ.mJdBUAx9juwTqdinIRr6-mExXmNdkx6wurKJAe_dc8M<br/>
   
   #### 6.4.2 Response<br/>
@@ -206,7 +206,7 @@
   - 403 Forbidden (유효하지 않은 Access Token)<br/>
 ### 6.5. 특정 게시글 조회<br/>
   #### 6.5.1. Request<br/>
-  - (GET) /posts/1<br/>
+  - (GET) localhost:8080/posts/1<br/>
   - Headers Authorization : Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZ2cxMkBuYXZlci5jb20iLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjkyMDM2NjcxfQ.mJdBUAx9juwTqdinIRr6-mExXmNdkx6wurKJAe_dc8M<br/>
   #### 6.5.2 Response<br/>
   - 200 OK<br/>
@@ -222,7 +222,7 @@
   - 403 Forbidden (유효하지 않은 Access Token)<br/>
 ### 6.6. 게시글 수정<br/>
   #### 6.6.1. Request<br/>
-  - (PUT) /posts/1<br/>
+  - (PUT) localhost:8080/posts/1<br/>
   - Headers Authorization : Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZ2cxMkBuYXZlci5jb20iLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjkyMDM2NjcxfQ.mJdBUAx9juwTqdinIRr6-mExXmNdkx6wurKJAe_dc8M<br/>
 ```JSON
     {
@@ -247,7 +247,7 @@
     - "작성자만 삭제할 수 있습니다."<br/>
 ### 6.7. 게시글 삭제<br/>
   #### 6.7.1. Request<br/>
-  - (DELETE) /posts/1<br/>
+  - (DELETE) localhost:8080/posts/1<br/>
   - Headers Authorization : Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZ2cxMkBuYXZlci5jb20iLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjkyMDM2NjcxfQ.mJdBUAx9juwTqdinIRr6-mExXmNdkx6wurKJAe_dc8M<br/>
   #### 6.7.2 Response<br/>
   - 200 OK<br/>
