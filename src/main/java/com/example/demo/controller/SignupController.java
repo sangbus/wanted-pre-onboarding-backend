@@ -68,7 +68,7 @@ public class SignupController {
             byte[] hashedPassword = md.digest(password.getBytes()); // 바이트배열로 해쉬를 반환
             return Base64.getEncoder().encodeToString(hashedPassword); // Base64로 인코딩, 바이트 -> String 반환
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("암호화 중 에러가 발생하였습니다.", e);
+            throw new RuntimeException("암호화 중 에러가 발생하였습니다.", e); // Runtime 에러
         }
     }
 
