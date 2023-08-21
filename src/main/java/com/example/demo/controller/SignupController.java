@@ -72,12 +72,9 @@ public class SignupController {
         }
     }
 
-    // Your method to save the member data in the database or any storage
-
+    // 데이터 베이스에 회원 저장
     private void saveMember(String email, String encryptedPassword) {
-        // Save the member with email and encryptedPassword
-        // ...
-
+        // 회원의 이메일과 암호화된 비밀번호 저장
         Member member = new Member();
         member.setEmail(email);
         member.setPassword(encryptedPassword);
